@@ -8,6 +8,7 @@ const sites = [
     'https://www.discord.com',
     'https://www.spotify.com',
     'https://www.instagram.com',
+    'https://jessushater-arch.github.io/zcv.cc/',
     'https://www.tiktok.com'
 ];
 
