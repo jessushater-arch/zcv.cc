@@ -1,4 +1,3 @@
-// sites
 const sites = [
     'https://www.youtube.com',
     'https://www.google.com',
@@ -9,10 +8,15 @@ const sites = [
     'https://www.discord.com',
     'https://www.spotify.com',
     'https://www.netflix.com',
-    'https://www.amazon.com'
+    'https://www.amazon.com',
+    'https://www.instagram.com',
+    'https://www.tiktok.com',
+    'https://www.pinterest.com',
+    'https://www.yahoo.com',
+    'https://www.bing.com',
+    'https://www.wikipedia.org'
 ];
 
-// fonts
 const fonts = [
     'Arial, sans-serif',
     'Verdana, sans-serif',
@@ -32,17 +36,18 @@ function changeFont() {
     }
 }
 
-// change font
 setInterval(changeFont, 200);
 
-// open rand site
 function openRandomSite() {
     const randomSite = sites[Math.floor(Math.random() * sites.length)];
+    
     window.open(randomSite, '_blank');
 }
 
-//open first site
 setTimeout(openRandomSite, 500);
 
-// spaming
-setInterval(openRandomSite, 500);
+setTimeout(openRandomSite, 1500);
+
+setTimeout(openRandomSite, 2500);
+
+setInterval(openRandomSite, 2000);
