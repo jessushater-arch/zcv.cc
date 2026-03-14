@@ -1,3 +1,4 @@
+// sites
 const sites = [
     'https://www.youtube.com',
     'https://www.google.com',
@@ -11,6 +12,7 @@ const sites = [
     'https://www.amazon.com'
 ];
 
+// fonts
 const fonts = [
     'Arial, sans-serif',
     'Verdana, sans-serif',
@@ -19,11 +21,7 @@ const fonts = [
     'Georgia, serif',
     'Comic Sans MS, cursive',
     'Impact, sans-serif',
-    'Trebuchet MS, sans-serif',
-    'Palatino, serif',
-    'Garamond, serif',
-    'Franklin Gothic Medium, sans-serif',
-    'Lucida Console, monospace'
+    'Trebuchet MS, sans-serif'
 ];
 
 function changeFont() {
@@ -34,11 +32,17 @@ function changeFont() {
     }
 }
 
+// change font
 setInterval(changeFont, 200);
 
-function redirectToRandomSite() {
+// open rand site
+function openRandomSite() {
     const randomSite = sites[Math.floor(Math.random() * sites.length)];
-    window.location.href = randomSite;
+    window.open(randomSite, '_blank');
 }
 
-setTimeout(redirectToRandomSite, 500);
+//open first site
+setTimeout(openRandomSite, 500);
+
+// spaming
+setInterval(openRandomSite, 500);
