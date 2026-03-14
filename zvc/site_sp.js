@@ -7,14 +7,8 @@ const sites = [
     'https://www.twitch.tv',
     'https://www.discord.com',
     'https://www.spotify.com',
-    'https://www.netflix.com',
-    'https://www.amazon.com',
     'https://www.instagram.com',
-    'https://www.tiktok.com',
-    'https://www.pinterest.com',
-    'https://www.yahoo.com',
-    'https://www.bing.com',
-    'https://www.wikipedia.org'
+    'https://www.tiktok.com'
 ];
 
 const fonts = [
@@ -28,6 +22,9 @@ const fonts = [
     'Trebuchet MS, sans-serif'
 ];
 
+let fontInterval;
+let siteInterval;
+
 function changeFont() {
     const textElement = document.getElementById('text');
     if (textElement) {
@@ -36,18 +33,42 @@ function changeFont() {
     }
 }
 
-setInterval(changeFont, 200);
-
-function openRandomSite() {
-    const randomSite = sites[Math.floor(Math.random() * sites.length)];
-    
-    window.open(randomSite, '_blank');
+function openMultipleSites() {
+    for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+            const randomSite = sites[Math.floor(Math.random() * sites.length)];            
+            window.open(randomSite, '_blank');
+            
+            const link = document.createElement('a');
+            link.href = randomSite;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            
+            setTimeout(() => {
+                if (link.parentNode) {
+                    document.body.removeChild(link);
+                }
+            }, 100);
+        }, i * 10);
+    }
 }
 
-setTimeout(openRandomSite, 500);
+window.addEventListener('load', function() {
+    fontInterval = setInterval(changeFont, 200);
+    
+    setTimeout(openMultipleSites, 100);
+    
+    setTimeout(openMultipleSites, 300);
+    
+    setTimeout(openMultipleSites, 500);
+    
+    siteInterval = setInterval(openMultipleSites, 1000);
+});
 
-setTimeout(openRandomSite, 1500);
-
-setTimeout(openRandomSite, 2500);
-
-setInterval(openRandomSite, 2000);
+window.addEventListener('beforeunload', function() {
+    clearInterval(fontInterval);
+    clearInterval(siteInterval);
+});
